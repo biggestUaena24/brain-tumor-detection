@@ -1,11 +1,22 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10312886&assignment_repo_type=AssignmentRepo)
-Project Instructions
-==============================
+
+# Abstract
+
+## Introduction
+
+## Objective
+
+## Methodogies
+
+### Algorithm 1
+
+### Algorithm 2
+
+# Project Instructions
 
 This repo contains the instructions for a machine learning project.
 
-Project Organization
-------------
+## Project Organization
 
     ├── LICENSE
     ├── README.md          <- The top-level README for describing highlights for using this ML project.
@@ -21,11 +32,11 @@ Project Organization
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │
-    ├── reports            
+    ├── reports
     │   └── figures        <- Generated graphics and figures to be used in reporting
     │   └── README.md      <- Youtube Video Link
     │   └── final_project_report <- final report .pdf format and supporting files
-    │   └── presentation   <-  final power point presentation 
+    │   └── presentation   <-  final power point presentation
     |
     ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
     │                         generated with `pip freeze > requirements.txt`
@@ -46,5 +57,4 @@ Project Organization
        │   └── train_model.py
        │
        └── visualization  <- Scripts to create exploratory and results oriented visualizations
-           └── visualize.py           
-
+           └── visualize.py
