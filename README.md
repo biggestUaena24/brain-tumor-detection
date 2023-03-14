@@ -12,6 +12,20 @@
 
 ### Algorithm 2
 
+# Environment Setup
+
+## Pre-requisites
+
+- Miniconda/Anaconda 3
+
+## Create Conda Environment
+
+Run the following command on a terminal prompt.
+
+```
+conda env create -f environment.yml
+```
+
 # Project Instructions
 
 This repo contains the instructions for a machine learning project.
