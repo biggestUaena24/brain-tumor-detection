@@ -2,21 +2,29 @@
 
 # Abstract
 
+## Automated Brain Tumor Detection in MRI Images Using Machine Learning Techniques
+
+> Datasets used in this project are from: https://datasetsearch.research.google.com/
+>
+> This project uses the following dataset:
+> https://www.kaggle.com/datasets/navoneel/brain-mri-images-for-brain-tumor-detection
+
 ## Introduction
 
-Datasets used in this project are from: https://datasetsearch.research.google.com/
-
-## Dataset
-Brain MRI Images for Brain Tumor Detection
-https://www.kaggle.com/datasets/navoneel/brain-mri-images-for-brain-tumor-detection
+Brain tumor detection from MRI images is a critical and challenging task in medical diagnosis,
+as early and accurate identification of tumors can significantly improve patient outcomes. Manual
+analysis of MRI images is time-consuming and subject to inter-observer variability, highlighting the need
+for automated approaches to assist medical practitioners and enhance the efficiency of their workflow.
 
 ## Objective
 
-## Methodogies
+This project aims to develop a machine learning-based system capable of detecting brain tumors in MRI images
+with high accuracy, which could potentially enable the general public to upload their MRI scans and receive
+feedback on the presence of tumors.
 
-### Algorithm 1
+## Methodology
 
-### Algorithm 2
+To be decided
 
 # Environment Setup
 
@@ -33,8 +41,6 @@ conda env create -f environment.yml
 ```
 
 # Project Instructions
-
-This repo contains the instructions for a machine learning project.
 
 ## Project Organization
 
