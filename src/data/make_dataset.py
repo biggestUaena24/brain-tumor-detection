@@ -1,30 +1,46 @@
-# -*- coding: utf-8 -*-
-import click
-import logging
+import os
+
 from pathlib import Path
-from dotenv import find_dotenv, load_dotenv
+from PIL import Image
 
-
-@click.command()
-@click.argument('input_filepath', type=click.Path(exists=True))
-@click.argument('output_filepath', type=click.Path())
-def main(input_filepath, output_filepath):
+def main():
     """ Runs data processing scripts to turn raw data from (../raw) into
         cleaned data ready to be analyzed (saved in ../processed).
     """
-    logger = logging.getLogger(__name__)
-    logger.info('making final data set from raw data')
+    current_file = Path(__file__).resolve()
+    project_root = current_file.parents[2] # the root directory is 2 levels up
 
+    input_filepath = os.path.join(project_root, "data/raw/brain_tumor")
+    output_filepath = os.path.join(project_root, "data/processed/brain_tumor")
+
+    input_dir = Path(input_filepath)
+    output_dir = Path(output_filepath)
+
+    if not input_dir.exists():
+        raise ValueError(f"Path: {input_filepath} does not exists.")
+
+    if not output_dir.exists():
+        output_dir.mkdir()
+
+    classes = ["no", "yes"]
+
+    for cl in classes:
+        input_folder = os.path.join(input_dir.resolve(), cl)
+
+        # create output input_folder 
+        output_folder = Path(os.path.join(output_dir.resolve(), cl))
+        if not output_folder.exists():
+            output_folder.mkdir()
+
+        for img_name in os.listdir(input_folder):
+            img_path = os.path.join(input_folder, img_name)
+            img = Image.open(img_path)
+
+            if img.mode != "RGB":
+                img = img.convert("RGB")
+                
+            img_resized = img.resize((224, 224), Image.LANCZOS)
+            img_resized.save(os.path.join(output_folder.resolve(), img_name), format="JPEG")
 
 if __name__ == '__main__':
-    log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    logging.basicConfig(level=logging.INFO, format=log_fmt)
-
-    # not used in this stub but often useful for finding various files
-    project_dir = Path(__file__).resolve().parents[2]
-
-    # find .env automagically by walking up directories until it's found, then
-    # load up the .env entries as environment variables
-    load_dotenv(find_dotenv())
-
     main()
