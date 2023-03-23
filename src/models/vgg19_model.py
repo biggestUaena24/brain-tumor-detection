@@ -59,4 +59,3 @@ class DetectorModelBaseVGG19:
     def fit(train_X, trian_Y, test_X, test_Y, batch_size=32, epochs=30, verbose=1):
         pass
 
-
