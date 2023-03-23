@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import os
 import cv2
 from sklearn.model_selection import train_test_split
+import tensorflow as tf
+from tensorflow.keras.models import Model
 
 from keras.utils import to_categorical
 from keras.applications.vgg19 import VGG19
@@ -27,16 +29,15 @@ for cl in classes:
 X = np.array(X)
 Y = np.array(Y)
 Y = to_categorical(Y, num_classes=2)
-train_X, train_Y, test_X, test_Y = train_test_split(
-    X, Y, test_size=0.2, random_state=random_seed)
+train_X, test_X, train_Y, test_Y = train_test_split(X, Y, test_size=0.2, random_state=random_seed)
 
 vgg19_base = VGG19(weights='imagenet', include_top=False,
                    input_shape=(img_size, img_size, 3))
 x1 = vgg19_base.output
-x1 = GlobalAveragePooling2D()(x1)
-x1 = Dense(1024, activation='relu')(x1)
-x1 = Dropout(0.5)(x1)
-predictions = Dense(len(classes), activation='softmax')(x1)
+x1 = tf.keras.layers.GlobalAveragePooling2D()(x1)
+x1 = tf.keras.layers.Dense(1024, activation='relu')(x1)
+x1 = tf.keras.layers.Dropout(0.5)(x1)
+predictions = tf.keras.layers.Dense(len(classes), activation='softmax')(x1)
 
 model = Model(inputs=[vgg19_base.input], outputs=[predictions])
 
