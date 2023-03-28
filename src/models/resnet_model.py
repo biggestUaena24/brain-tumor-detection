@@ -1,6 +1,6 @@
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.models import Model
+from keras.models import Model
 from sklearn.model_selection import ParameterGrid
 
 from keras.utils import to_categorical
@@ -13,7 +13,7 @@ class DetectorModelBaseResNet:
 
     def _build_model(self):
         resnet50_base = tf.keras.applications.ResNet50(weights='imagenet', include_top=False,
-                                input_shape=self.input_shape)
+                                                       input_shape=self.input_shape)
         x1 = resnet50_base.output
         x1 = tf.keras.layers.GlobalAveragePooling2D()(x1)
         x1 = tf.keras.layers.Dense(1024, activation='relu')(x1)
@@ -26,14 +26,13 @@ class DetectorModelBaseResNet:
             layer.trainable = False
 
         self.model.compile(optimizer='adam', loss='categorical_crossentropy',
-                        metrics=['accuracy'])
+                           metrics=['accuracy'])
 
     def train(self, train_X, train_Y, batch_size=32, epochs=30, validation_split=0.2):
         train_Y = to_categorical(train_Y, num_classes=2)
         history = self.model.fit(train_X, train_Y, batch_size=batch_size, epochs=epochs, verbose=1,
-                                validation_split=validation_split)
+                                 validation_split=validation_split)
         return history
-
 
     def predict(self, X):
         predictions = self.model.predict(X)
@@ -43,7 +42,7 @@ class DetectorModelBaseResNet:
         test_Y = to_categorical(test_Y, num_classes=2)
         score = self.model.evaluate(test_X, test_Y, verbose=0)
         return score
-    
+
     def grid_search(self, param_grid, train_X, train_Y, test_X, test_Y, epochs=30, verbose=1):
         best_model = None
         best_score = -np.inf
@@ -56,8 +55,10 @@ class DetectorModelBaseResNet:
             print(f"Training with parameters: {params}")
 
             self._build_model()
-            self.model.compile(optimizer=params['optimizer'], loss=params['loss'], metrics=["accuracy"])
-            history = self.train(train_X, train_Y, batch_size=params['batch_size'], epochs=epochs, validation_split=0.2)
+            self.model.compile(
+                optimizer=params['optimizer'], loss=params['loss'], metrics=["accuracy"])
+            history = self.train(
+                train_X, train_Y, batch_size=params['batch_size'], epochs=epochs, validation_split=0.2)
             score = self.evaluate(test_X, test_Y)
 
             if score[1] > best_score:
