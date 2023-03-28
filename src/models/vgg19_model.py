@@ -56,10 +56,6 @@ class DetectorModelBaseVGG19:
         self.model.save(save_path)
 
     def score(self, test_X, test_Y, verbose=0):
-        assert self.model is not None, "Build model before getting score."
-        assert self.compiled, "Model needs to be compiled before getting score."
-        assert self.fitted, "Model must be fitted before getting score."
-
         return self.model.evaluate(test_X, test_Y, verbose=verbose)
     def grid_search(self, param_grid, train_X, train_Y, test_X, test_Y, epochs=30, verbose=1):
         best_model = None
