@@ -2,14 +2,13 @@ import os
 import cv2
 import numpy as np
 from sklearn.model_selection import train_test_split
-from keras.utils import to_categorical
-import models.resnet_model
-import models.vgg19_model
+from models.resnet_model import DetectorModelBaseResNet
+from models.vgg19_model import DetectorModelBaseVGG19
 
 random_seed = 42
 img_size = 224  # ResNet50 uses 224x224 input size by default
 current_dir = os.path.dirname(os.path.abspath(__file__))
-data_dir = os.path.join(current_dir, '../../data/raw/brain_tumor')
+data_dir = os.path.join(current_dir, '..\data\\raw\\brain_tumor')
 classes = ["no", "yes"]
 
 X = []
@@ -24,5 +23,24 @@ for cl in classes:
 
 X = np.array(X)
 Y = np.array(Y)
-Y = to_categorical(Y, num_classes=2)
 train_X, test_X, train_Y, test_Y = train_test_split(X, Y, test_size=0.2, random_state=random_seed)
+
+param_grid_Resnet = {
+    'optimizer': ['adam', 'rmsprop'],
+    'loss': ['categorical_crossentropy'],
+    'batch_size': [32, 64]
+}
+
+param_grid_vgg = {
+    'optimizer': ['adam', 'rmsprop'],
+    'loss': ['binary_crossentropy'],
+    'batch_size': [32, 64]
+}
+
+model = DetectorModelBaseVGG19()
+history, best_params = model.grid_search(param_grid_vgg, train_X, train_Y, test_X, test_Y, epochs=10)
+
+
+# model = DetectorModelBaseResNet()
+# history, best_params = model.grid_search(param_grid, train_X, train_Y, test_X, test_Y, epochs=10)
+
