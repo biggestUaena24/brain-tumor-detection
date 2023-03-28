@@ -7,7 +7,10 @@
 > Datasets used in this project are from: https://datasetsearch.research.google.com/
 >
 > This project uses the following dataset:
+>
 > https://www.kaggle.com/datasets/navoneel/brain-mri-images-for-brain-tumor-detection
+>
+> https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset
 
 ## Introduction
 
