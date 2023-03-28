@@ -40,7 +40,6 @@ param_grid_vgg = {
 model = DetectorModelBaseVGG19()
 history, best_params = model.grid_search(param_grid_vgg, train_X, train_Y, test_X, test_Y, epochs=10)
 
-
-# model = DetectorModelBaseResNet()
-# history, best_params = model.grid_search(param_grid, train_X, train_Y, test_X, test_Y, epochs=10)
+model = DetectorModelBaseResNet()
+history, best_params = model.grid_search(param_grid, train_X, train_Y, test_X, test_Y, epochs=10)
 
