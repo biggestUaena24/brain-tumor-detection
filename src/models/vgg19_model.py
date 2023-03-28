@@ -3,6 +3,7 @@ from keras.layers import GlobalAveragePooling2D, Dense, Dropout
 from keras.applications.vgg19 import VGG19
 from keras.models import Model
 from sklearn.model_selection import ParameterGrid
+from keras.utils import to_categorical
 
 
 class DetectorModelBaseVGG19:
@@ -24,12 +25,14 @@ class DetectorModelBaseVGG19:
                 x = layer(x)
 
         # sigmoid is logistic function, suited for binary classification
-        predictions = Dense(1, activation='sigmoid')(x)
+        predictions = Dense(2, activation='softmax')(x)
 
         self.model = Model(inputs=self.vgg19.input, outputs=predictions)
 
     
     def fit(self, train_X, train_Y, test_X, test_Y, batch_size=32, epochs=30, verbose=1):
+        train_Y = to_categorical(train_Y, num_classes=2)
+        test_Y = to_categorical(test_Y, num_classes=2)
         history = self.model.fit(
                     train_X,
                     train_Y,

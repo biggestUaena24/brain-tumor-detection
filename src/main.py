@@ -4,6 +4,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from models.resnet_model import DetectorModelBaseResNet
 from models.vgg19_model import DetectorModelBaseVGG19
+from keras.utils import to_categorical
 
 random_seed = 42
 img_size = 224  # ResNet50 uses 224x224 input size by default
@@ -25,7 +26,7 @@ X = np.array(X)
 Y = np.array(Y)
 train_X, test_X, train_Y, test_Y = train_test_split(X, Y, test_size=0.2, random_state=random_seed)
 
-param_grid_Resnet = {
+param_grid_resnet = {
     'optimizer': ['adam', 'rmsprop'],
     'loss': ['categorical_crossentropy'],
     'batch_size': [32, 64]
@@ -38,8 +39,8 @@ param_grid_vgg = {
 }
 
 vgg_model = DetectorModelBaseVGG19()
-vgg_history, vgg_best_params = model.grid_search(param_grid_vgg, train_X, train_Y, test_X, test_Y, epochs=10)
+vgg_history, vgg_best_params = vgg_model.grid_search(param_grid_vgg, train_X, train_Y, test_X, test_Y, epochs=10)
 
 resnet_model = DetectorModelBaseResNet()
-resnet_history, resnet_best_params = model.grid_search(param_grid, train_X, train_Y, test_X, test_Y, epochs=10)
+resnet_history, resnet_best_params = resnet_model.grid_search(param_grid_resnet, train_X, train_Y, test_X, test_Y, epochs=10)
 
