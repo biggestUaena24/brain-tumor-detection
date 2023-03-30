@@ -1,14 +1,16 @@
 import os
+import cv2
 
 from pathlib import Path
 from PIL import Image
+
 
 def main():
     """ Runs data processing scripts to turn raw data from (../raw) into
         cleaned data ready to be analyzed (saved in ../processed).
     """
     current_file = Path(__file__).resolve()
-    project_root = current_file.parents[2] # the root directory is 2 levels up
+    project_root = current_file.parents[2]  # the root directory is 2 levels up
 
     input_filepath = os.path.join(project_root, "data/raw/brain_tumor")
     output_filepath = os.path.join(project_root, "data/processed/brain_tumor")
@@ -27,7 +29,7 @@ def main():
     for cl in classes:
         input_folder = os.path.join(input_dir.resolve(), cl)
 
-        # create output input_folder 
+        # create output input_folder
         output_folder = Path(os.path.join(output_dir.resolve(), cl))
         if not output_folder.exists():
             output_folder.mkdir()
@@ -38,9 +40,11 @@ def main():
 
             if img.mode != "RGB":
                 img = img.convert("RGB")
-                
+
             img_resized = img.resize((224, 224), Image.LANCZOS)
-            img_resized.save(os.path.join(output_folder.resolve(), img_name), format="JPEG")
+            img_resized.save(os.path.join(
+                output_folder.resolve(), img_name), format="JPEG")
+
 
 if __name__ == '__main__':
     main()
