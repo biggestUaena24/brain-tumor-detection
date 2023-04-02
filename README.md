@@ -69,6 +69,9 @@ conda env create -f environment.yml
     │   ├── interim        <- Intermediate data that has been transformed.
     │   ├── processed      <- The final, canonical data sets for modeling.
     │   └── raw            <- The original, immutable data dump.
+    |       |__ testing
+    |       |__ training
+    |
     │
     ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
     │                         the creator's initials, and a short `-` delimited description, e.g.
@@ -92,13 +95,8 @@ conda env create -f environment.yml
        │   └── make_dataset.py
        │   └── pre-processing.py
        │
-       ├── features       <- Scripts to turn raw data into features for modeling
-       │   └── build_features.py
        │
        ├── models         <- Scripts to train models and then use trained models to make
-       │   │                 predictions
-       │   ├── predict_model.py
-       │   └── train_model.py
-       │
-       └── visualization  <- Scripts to create exploratory and results oriented visualizations
-           └── visualize.py
+           │                 predictions
+           ├── resnet_model.py
+           └── vgg19_model.py
