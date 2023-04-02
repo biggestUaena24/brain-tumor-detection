@@ -16,7 +16,7 @@ def preprocess_image(img_path, target_size=(224, 224)):
 
 def load_data(target="train", limit=200, randomize=True):
     # for now the method only loads all the data as yes or no
-    current_file_path = Path(__file__).resolve()
+    current_file_path = os.path.dirname(os.path.abspath(__file__))
 
     X = []
     Y = []
