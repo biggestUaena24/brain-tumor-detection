@@ -35,12 +35,12 @@ WARNING: KEEP IN MIND THAT ITERATING 10, 20, and 30 EPOCHS
          SO IT SHOULD BE READY TO USE GPU WHEN IT IS AVAILABLE.
 """
 
-# resnet_model = DetectorModelBaseResNet()
-# resnet_history, resnet_best_params = resnet_model.grid_search(
-#    param_grid_resnet, train_X, train_Y, test_X, test_Y, verbose=1)
-# resnet_model.plot_accuracy()
-# resnet_model.plot_roc_curve(test_X, test_Y)
-# resnet_model.plot_confusion_matrix(test_X, test_Y)
+resnet_model = DetectorModelBaseResNet()
+resnet_history, resnet_best_params = resnet_model.grid_search(
+    param_grid_resnet, train_X, train_Y, test_X, test_Y, verbose=1)
+resnet_model.plot_accuracy()
+resnet_model.plot_roc_curve(test_X, test_Y)
+resnet_model.plot_confusion_matrix(test_X, test_Y)
 
 vgg_model = DetectorModelBaseVGG19()
 vgg_history, vgg_best_params = vgg_model.grid_search(
