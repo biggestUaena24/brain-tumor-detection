@@ -28,6 +28,7 @@ param_grid_vgg = {
 }
 
 """
+
 WARNING: KEEP IN MIND THAT ITERATING 10, 20, and 30 EPOCHS
          FOR GRID SEARCH WILL TAKE A HUGE AMOUNT OF TIME.
          CONSIDER USING GPU ACCELERATION WITH CUDA.
@@ -38,17 +39,35 @@ WARNING: KEEP IN MIND THAT ITERATING 10, 20, and 30 EPOCHS
 resnet_model = DetectorModelBaseResNet()
 resnet_history, resnet_best_params = resnet_model.grid_search(
     param_grid_resnet, train_X, train_Y, test_X, test_Y, verbose=1)
+
+vgg_model = DetectorModelBaseVGG19()
+vgg_history, vgg_best_params = vgg_model.grid_search(
+    param_grid_vgg, train_X, train_Y, test_X, test_Y, verbose=1)
+
+# load new test data
+test_X, test_Y = load_data(target='test', limit=600)
+
+# use best params to create a new model
+resnet_model = DetectorModelBaseResNet()
+resnet_model.model.compile(
+    optimizer=resnet_best_params['optimizer'], loss=resnet_best_params['loss'])
+
+resnet_history = resnet_model.fit(
+    train_X, train_Y, batch_size=resnet_best_params['batch_size'], epochs=resnet_best_params['epochs'], validation_split=0.2)
+
 resnet_model.plot_accuracy()
 resnet_model.plot_roc_curve(test_X, test_Y)
 resnet_model.plot_confusion_matrix(test_X, test_Y)
 
 vgg_model = DetectorModelBaseVGG19()
-vgg_history, vgg_best_params = vgg_model.grid_search(
-    param_grid_vgg, train_X, train_Y, test_X, test_Y, verbose=1)
+vgg_model.compile(
+    optimizer=vgg_best_params['optimizer'], loss=vgg_best_params['loss'])
+history = vgg_model.fit(train_X, train_Y, test_X, test_Y,
+                        batch_size=vgg_best_params['batch_size'], epochs=vgg_best_params['epochs'])
+
 vgg_model.plot_accuracy()
 vgg_model.plot_roc_curve(test_X, test_Y)
 vgg_model.plot_confusion_matrix(test_X, test_Y)
-
 
 # Saving trained model, uncomment lines below
 # resnet_model.save(path)
