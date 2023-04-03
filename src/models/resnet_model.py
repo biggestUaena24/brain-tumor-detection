@@ -111,7 +111,7 @@ class DetectorModelBaseResNet:
     def load(self, path):
         self.model = load_model(path)
 
-    def grid_search(self, param_grid, train_X, train_Y, test_X, test_Y, epochs=30, verbose=1):
+    def grid_search(self, param_grid, train_X, train_Y, test_X, test_Y, verbose=1):
         best_model = None
         best_score = -np.inf
         best_params = None
@@ -126,7 +126,7 @@ class DetectorModelBaseResNet:
             self.compile(
                 optimizer=params['optimizer'], loss=params['loss'], metrics=["accuracy"])
             history = self.fit(
-                train_X, train_Y, batch_size=params['batch_size'], epochs=epochs, validation_split=0.2)
+                train_X, train_Y, batch_size=params['batch_size'], epochs=params['epochs'], validation_split=0.2, verbose=verbose)
             score = self.score(test_X, test_Y)
 
             if score[1] > best_score:
