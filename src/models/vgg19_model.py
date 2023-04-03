@@ -12,6 +12,9 @@ from sklearn.metrics import roc_curve, auc, confusion_matrix
 class DetectorModelBaseVGG19:
     def __init__(self, weights='imagenet', include_top=False, input_shape=(224, 224, 3), classes=["no", "yes"]):
         self.classes = [cl for cl in classes]
+        self.weights = weights
+        self.include_top = include_top
+        self.input_shape = input_shape
         self._build(weights, include_top, input_shape)
 
     def _build(self, weights, include_top, input_shape):
@@ -118,7 +121,7 @@ class DetectorModelBaseVGG19:
         test_Y = to_categorical(test_Y, num_classes=len(self.classes))
         return self.model.evaluate(test_X, test_Y, verbose=verbose)
 
-    def grid_search(self, param_grid, train_X, train_Y, test_X, test_Y, epochs=30, verbose=1):
+    def grid_search(self, param_grid, train_X, train_Y, test_X, test_Y, verbose=1):
         best_model = None
         best_score = -np.inf
         best_params = None
@@ -130,7 +133,7 @@ class DetectorModelBaseVGG19:
             print(f"Training with parameters: {params}")
 
             # Reset model
-            self.build()
+            self._build(self.weights, self.include_top, self.input_shape)
             self.compile(optimizer=params['optimizer'],
                          loss=params['loss'], metrics=["accuracy"])
 
