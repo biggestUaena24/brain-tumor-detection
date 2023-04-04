@@ -18,14 +18,14 @@ Some of the performance metrics that we are testing on the models are:
 ## Visualization
 
 This are some of the images that we are getting from the ResNet50 model.
-<img src="./images/resnet_acc_loss.png" width="400" height="400" />
-<img src="./images/resnet_cm.png" width="400" height="400" />
-<img src="./images/resnet_roc.png" width="400" height="400" />
+![](./images/resnet_acc_loss.png)
+![](./images/resnet_cm.png)
+![](./images/resnet_roc.png)
 
 This are some of the images that we are getting from the VGG-19 model.
-<img src="./images/vgg_acc_loss.png" width="400" height="400" />
-<img src="./images/vgg_cm.png" width="400" height="400" />
-<img src="./images/vgg_roc.png" width="400" height="400" />
+![](./images/vgg_acc_loss.png)
+![](./images/vgg_cm.png)
+![](./images/vgg_roc.png)
 
 
 ## Interpretation of the Results 

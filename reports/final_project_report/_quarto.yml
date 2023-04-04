@@ -2,9 +2,9 @@ project:
   type: book
 
 book:
-  title: "Machine Learning Model for Real-life Predictions"
-  author: "Student Name"
-  date: "2/18/2023"
+  title: "Deep Learning for Predicting Brain Tumor From MRI Images"
+  author: "Juan Carlos && Geun Han"
+  date: "04/04/2023"
   chapters:
     - abstract.qmd
     - index.qmd
@@ -13,9 +13,6 @@ book:
     - methodology.qmd
     - results.qmd
     - conclusion.qmd
-    - references.qmd
-
-bibliography: references.bib
 
 format:
   # html:

@@ -1,7 +1,5 @@
 # Methodology
 
-## Introduction to Python for Machine Learning
-
 ## Platform and Machine Configurations Used
 
 We used Google Colab for running our code and not on our machine because Google Colab provided GPU acceleration which means that we can train and test
@@ -42,17 +40,17 @@ VGG architecture.
 
 ## Model Training: 
 
-We are basically fitting all the data that we are loading into our model by "fit" method.
+We are basically fitting all the data that we are loading into our model by "fit" method. This method will allow us to fit all the data that we are loading into the model.
 
-## Model Evaluation
+# Model Evaluation
 
 After training all the data, we are evaluating the models in different aspect:
 
-# Accuracy using evaluate() method
+## Accuracy using evaluate() method
 
 We are trying to see the accuracy score that is returned from the evaluate() method so we can see if the accuracy score is high enough or not.
 
-# Plotting ROC curve
+## Plotting ROC curve
 
 We are also plotting ROC curve to see the area of the curve is big enough or not. Since the bigger the area gets, more accurate the model is, so we want the models
 to have a big ROC curve area.
