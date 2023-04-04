@@ -9,6 +9,31 @@ from sklearn.metrics import roc_curve, auc, confusion_matrix
 
 
 class DetectorModelBaseResNet:
+    """
+    A class that implements a ResNet50-based binary classifier with additional custom layers.
+    This class provides methods for building, training, evaluation, and hyperparameter optimization.
+    It also includes methods for visualizing the ROC curve, accuracy, loss, and confusion matrix.
+
+    Attributes:
+        input_shape (tuple): The input shape of the images (default: (224, 224, 3)).
+        model (tf.keras.Model): The compiled Keras Model object.
+        history (tf.keras.callbacks.History): History object containing training and validation metrics.
+
+    Methods:
+        _build_model(): Builds the ResNet50-based model with custom layers.
+        compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy']): Compiles the model with the specified optimizer, loss, and metrics.
+        fit(train_X, train_Y, batch_size=32, epochs=30, validation_split=0.2, verbose=1): Trains the model on the given dataset.
+        predict(X): Returns class probabilities for input images.
+        compute_roc_curve(test_X, test_Y): Computes the ROC curve and AUC for the model.
+        plot_roc_curve(test_X, test_Y): Plots the ROC curve for the model.
+        plot_accuracy(): Plots the training and validation accuracy and loss.
+        plot_confusion_matrix(test_X, test_Y): Plots the confusion matrix for the model.
+        score(test_X, test_Y): Evaluates the model on the given test dataset.
+        save(path): Saves the model to the specified path.
+        load(path): Loads a model from the specified path.
+        grid_search(param_grid, train_X, train_Y, test_X, test_Y, verbose=1): Performs a grid search for
+            hyperparameter optimization using the given parameter grid and returns the best model and parameters.
+    """
     def __init__(self, input_shape=(224, 224, 3)):
         self.input_shape = input_shape
         self._build_model()

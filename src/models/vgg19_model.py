@@ -10,6 +10,32 @@ from sklearn.metrics import roc_curve, auc, confusion_matrix
 
 
 class DetectorModelBaseVGG19:
+    """
+    A VGG19-based object detector model class with custom layers for classification. This class provides methods for
+    building, training, evaluation, visualization, and hyperparameter optimization.
+
+    Attributes:
+        classes (list): List of class labels for the object detector.
+        weights (str): Pre-trained weights to load for the VGG19 model.
+        include_top (bool): Whether to include the fully-connected layer at the top of the VGG19 model.
+        input_shape (tuple): The input shape for the VGG19 model.
+        model (tf.keras.Model): The compiled Keras Model object.
+
+    Methods:
+        _build(weights, include_top, input_shape): Builds the VGG19-based model with custom layers.
+        fit(train_X, train_Y, test_X, test_Y, batch_size=32, epochs=30, verbose=1): Trains the model on the given dataset.
+        compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"]): Compiles the model with the specified optimizer, loss, and metrics.
+        predict(X): Returns the predictions for the given input data.
+        compute_roc_curve(test_X, test_Y): Computes the ROC curve for the model.
+        plot_roc_curve(test_X, test_Y): Plots the ROC curve for the model.
+        plot_accuracy(): Plots the accuracy of the model during training.
+        plot_confusion_matrix(test_X, test_Y): Plots the confusion matrix for the model.
+        load(path): Loads the model from the specified path.
+        save(save_path): Saves the model to the specified path.
+        score(test_X, test_Y, verbose=0): Evaluates the model on the given test dataset.
+        grid_search(param_grid, train_X, train_Y, test_X, test_Y, verbose=1): Performs a grid search for
+            hyperparameter optimization using the given parameter grid and returns the best model and parameters.
+    """
     def __init__(self, weights='imagenet', include_top=False, input_shape=(224, 224, 3), classes=["no", "yes"]):
         self.classes = [cl for cl in classes]
         self.weights = weights

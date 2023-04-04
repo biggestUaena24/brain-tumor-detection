@@ -1,33 +1,36 @@
 # Results
 
-To compare different machine learning models in the results section, here are some steps to consider:
-
 ## Description of the Models
 
-Start by providing a brief description of each model, including its purpose, algorithm type, and any relevant parameters or features used.
+Both VGG-19 and ResNet50 are a type of CNN pre-trained model that we are using in this project. In this section, we are going to sepcify the performance and some graphs that we are getting from the result of the training and testing.
 
 ## Performance Metrics
 
-Describe the performance metrics used to evaluate the models, such as RMSE, MSE, accuracy, precision, recall, F1 score, or area under the receiver operating characteristic curve (AUC-ROC), etc based on the model class.
+Some of the performance metrics that we are testing on the models are:
 
-## Results Table
-
-Create a results table that presents the performance metrics for each model in a clear and concise format. The table should include the name of the model, the performance metric, and the value of the metric. It can also be helpful to include the standard deviation or confidence intervals for each metric.
-
-## Interpretation of the Results 
-
-Provide an interpretation of the results, highlighting any significant differences between the models. Discuss which model performed the best and why, as well as any limitations or potential sources of error.
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- AUC
+- ROC Curve
 
 ## Visualization
 
-Provide visualizations to support the interpretation of the results, such as bar charts or box plots. These can help to illustrate the differences between the models and make the results more accessible to readers.
+This are some of the images that we are getting from the ResNet50 model.
+<img src="./images/resnet_acc_loss.png" width="400" height="400" />
+<img src="./images/resnet_cm.png" width="400" height="400" />
+<img src="./images/resnet_roc.png" width="400" height="400" />
 
-## Sensitivity Analysis
+This are some of the images that we are getting from the VGG-19 model.
+<img src="./images/vgg_acc_loss.png" width="400" height="400" />
+<img src="./images/vgg_cm.png" width="400" height="400" />
+<img src="./images/vgg_roc.png" width="400" height="400" />
 
-Conduct a sensitivity analysis to test the robustness of the models. This can involve varying the parameters or features used in the models and re-evaluating their performance.
 
+## Interpretation of the Results 
 
-
+Through all the visualization that we are providing, we can clearly see that VGG-19 model has a better result in ROC curve and in the confusion matrix. However, the accuracy and loss of the ResNet50 model similiar to the VGG-19 model. Due to these reasons, we are going to choose the VGG-19 model as our final model.
 
 
 

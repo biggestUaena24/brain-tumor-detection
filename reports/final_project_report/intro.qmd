@@ -1,13 +1,15 @@
-# Introduction to Project
-See this how you can add a reference, @knuth84.
+# Introduction to the Project
 
 ## Overview
+Brain tumor detection from MRI images is a critical and challenging task in medical diagnosis,
+as early and accurate identification of tumors can significantly improve patient outcomes. Manual
+analysis of MRI images is time-consuming and subject to inter-observer variability, highlighting the need
+for automated approaches to assist medical practitioners and enhance the efficiency of their workflow.
 
-## ExistingSystem
+## Objective
 
-## Objectives of Project (Must be clearly, precisely defined and must be covered in the work)
-
-
-
-
-
+This project aims to develop a machine learning-based system capable of detecting brain tumors in MRI images
+with high accuracy, which could potentially enable the general public to upload their MRI scans and receive
+feedback on the presence of tumors. It is important to develop such a program because as addressed in introduction,
+it is time-consuming for manual detection so by using such a model, it can increase and maximize efficiency of
+brain tumor detection for both hospitality infrastructure and patients.

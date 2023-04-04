@@ -1,3 +1,9 @@
 # Conclusion
 
-Conclude by summarizing the key findings of the analysis, discussing the implications of the results, and suggesting areas for future research.
+In conclusion, this project has successfully demonstrated the application of deep learning techniques, specifically ResNet50 and VGG-19 models, for brain tumor detection using MRI images. By leveraging the power of transfer learning and fine-tuning the models for this specific task, we have achieved promising results in terms of accuracy and generalization capabilities.
+
+The project has also showcased the importance of data preprocessing and visualization in model evaluation and performance improvement. Through the implementation of various visualizations such as ROC curves, accuracy and loss plots, and confusion matrices, we have been able to effectively assess the models' performance, identifying potential areas of improvement.
+
+It is important to note that the performance of the models depends on the quality and size of the dataset used for training and validation. Future work in this area could explore additional data augmentation techniques, as well as experimenting with other deep learning architectures and hyperparameter tuning to further improve the models' performance. Additionally, the integration of these models into clinical workflows could have a significant impact on the speed and accuracy of brain tumor diagnoses, ultimately improving patient outcomes and reducing the burden on healthcare professionals.
+
+In summary, this project has demonstrated the potential of deep learning models, particularly ResNet50 and VGG-19, for brain tumor detection in MRI images. The results serve as a solid foundation for further research and development, as well as a stepping stone towards more efficient and accurate diagnostic tools in the field of medical imaging.

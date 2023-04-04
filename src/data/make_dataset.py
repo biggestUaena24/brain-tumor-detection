@@ -5,6 +5,13 @@ import tensorflow as tf
 from pathlib import Path
 
 
+"""
+This file contains the code for loading the data and preprocessing it.
+
+Methods:
+    preprocess_image: preprocesses an image to be used in the model
+    load_data: loads the data from the data/raw folder
+"""
 def preprocess_image(img_path, target_size=(224, 224)):
     assert type(target_size) == tuple, "Target size must be of type tuple"
     img = tf.io.read_file(img_path)

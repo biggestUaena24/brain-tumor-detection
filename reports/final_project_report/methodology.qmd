@@ -3,30 +3,67 @@
 ## Introduction to Python for Machine Learning
 
 ## Platform and Machine Configurations Used
-Such Google Colab, Kaggle, Syzygy, or your own machine then the machine configuration.
 
-## Data Split
+We used Google Colab for running our code and not on our machine because Google Colab provided GPU acceleration which means that we can train and test
+our models better in Google Colab.
 
-Data splitting is the process of dividing the data into training, validation, and test sets. This step can help you evaluate the performance of the model on new data.
+## Data Split and Making
+
+We make our data into formats that we can pass into our model for training in two different methods. The first method we are using is "preprocess_image".
+This function we are taking the image and recode it until a form that we can resize the image and return the resized image. There are libraries that provides
+the functionality for reading the file and resizing the file which is tensorflow.io and tensorflow.image. We use "read_file", "decode_image", and "resize" functions
+from these libraries to successfully return the image that we want to pass into the models.
+
+Another function that we created is called "load_data". The main functionality of this function is to successfully load the data into the module that we want, in this case,
+main.py. This function takes in 3 parameters. The first one is target. We can select the mode through this parameter. If we select "train", then the function will return the train
+dataset and if we select "test", the function will return the test dataset. The second paramenter is limit. This parameter can pass in an integer parameter which can help the function
+to control how many data that a model wants to train or test the model with. The third parameter is "randomize" which takes in a boolean parameter and check if the model wants
+to take in data from dataset randomly or not.
+
+The way this function work is after model selected all the parameters, it will retrieve from the dataset all the images with brain tumors and without brain tumors for training and 
+testing. After retrieving all the data, the function will store the data in X and Y array and return the array in a NDARRAY in numpy library and return it to the model.
 
 ## Model Planning
 
-The next step is to select the appropriate machine learning or deep learning models ( 2 - 3 ) that can be used to solve the problem. This involves evaluating different models and selecting the one that is best suited for the problem.
+The first algorithm that we are going to implement is VGG-19. The benefit of using this algorithm is that it
+can train data without data augmentation and further to tune the model using data augmentation. VGG-19 is consists of
+19 layers which includes 16 convolutional layers, 3 fully connected layers, and 5 max-pooling layers, and some benefits
+of using VGG-19 is that it is a pre-trained model containing million of images and thousand of classes. This means
+that the model has already learned a wide range of features and it can be fined-tune for some specific tasks
+and in this case, classifying brain tumor. It is also one of the models that has a strong feature extraction and
+has a fairly simple architecture. However, VGG-19 is also computational heavy and also takes up large memory which
+means it is harder for deployment with limited memory devices.
+
+The second algorithm that we are implementing is ResNet50. The main benefit of using ResNet50 is the use of
+residual connections, which enable the network to learn identity functions. This helps alleviate the vanishing
+gradient problem and allows the network to train efficiently even with a large number of layers. It can also be scaled up
+or down depending on the specific problem and available computational resources. It also takes up lesser memory than
+VGG architecture.
 
 ## Model Training: 
 
-This involves using the training data to adjust the model parameters to improve its accuracy.
+We are basically fitting all the data that we are loading into our model by "fit" method.
 
 ## Model Evaluation
 
-Once the model is trained, the next step is to evaluate its performance on a validation dataset. 
+After training all the data, we are evaluating the models in different aspect:
+
+# Accuracy using evaluate() method
+
+We are trying to see the accuracy score that is returned from the evaluate() method so we can see if the accuracy score is high enough or not.
+
+# Plotting ROC curve
+
+We are also plotting ROC curve to see the area of the curve is big enough or not. Since the bigger the area gets, more accurate the model is, so we want the models
+to have a big ROC curve area.
 
 ## Model Optimization
 
-Based on the results of the model evaluation, the next step is to optimize the model to improve its performance. This involves making changes to the model's architecture, tuning the hyperparameters, and retraining the model.
+In this phase, grid_search is used to improve the accuracy of the model. We passed in different parameters for the model and tried to improve the accuracy
+to a sweet point where it is not overfitted but still reaches a high accuracy. We also use the epoch parameter to train the model so it can get the highest accuracy
+out of n times where n is epoch.
 
 ## Final Model Building
 
-Once the model is optimized, the final step is to fit the model and report final test error for each model
-
-Present the information with support Screen Shots/ Figures (Each Figure must be numbered and Description of Figure must be provided)
+After the model is successfully trained, we can see the final result by plotting all the different ascpects of the model. We have functions like "plot_accuracy",
+"plot_confusion_matrix", "plot_roc_curve" to visualize the aspects of our models and validate the models.
