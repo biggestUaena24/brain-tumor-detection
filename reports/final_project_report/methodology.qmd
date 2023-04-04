@@ -46,9 +46,9 @@ We are basically fitting all the data that we are loading into our model by "fit
 
 After training all the data, we are evaluating the models in different aspect:
 
-## Accuracy using evaluate() method
+## Accuracy
 
-We are trying to see the accuracy score that is returned from the evaluate() method so we can see if the accuracy score is high enough or not.
+We are trying to see the accuracy score that is returned from the `fit` method so we can see if the accuracy score is high enough or not.
 
 ## Plotting ROC curve
 
