@@ -49,7 +49,7 @@ test_X, test_Y = load_data(target='test', limit=600)
 
 # use best params to create a new model
 resnet_model = DetectorModelBaseResNet()
-resnet_model.model.compile(
+resnet_model.compile(
     optimizer=resnet_best_params['optimizer'], loss=resnet_best_params['loss'])
 
 resnet_history = resnet_model.fit(
