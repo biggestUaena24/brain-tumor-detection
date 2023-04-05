@@ -11,6 +11,12 @@
 > https://www.kaggle.com/datasets/navoneel/brain-mri-images-for-brain-tumor-detection
 >
 > https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset
+>
+> The report you can find it in ./reports/final_project_report/\_book/Deep-Learning-for-Predicting-Brain-Tumor-From-MRI-Images.pdf
+>
+> The link for the presentations is: https://www.canva.com/design/DAFfLNy9-9E/Da7IHMFRXJKDKKowhEvC9A/edit?utm_content=DAFfLNy9-9E&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+>
+> The link for the video presentation is: https://drive.google.com/file/d/1lGtc4JmllZH0EmvwGzqr5y-aURuVlM9t/view?usp=share_link
 
 ## Introduction
 
