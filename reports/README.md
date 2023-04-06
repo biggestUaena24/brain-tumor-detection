@@ -1,11 +1,7 @@
-To keep YouTube Video Presentation (non-public) follow the steps below:
-- Change video privacy settings
-- Sign in to YouTube Studio.
-- From the left menu, select Content.
-- Point to the video you'd like to update. To see your live uploads, select the Live tab.
-- Click the down arrow under "Visibility" and choose `Unlisted`.
-- Save and share the link below.
+To watch the video presentation, click the following link:
 
-To watch the video presentation, click the following YouTube link:
+![link](https://drive.google.com/file/d/1lGtc4JmllZH0EmvwGzqr5y-aURuVlM9t/view?usp=share_link)
 
-![link]()
+To watch the presentation, click the following link:
+
+![link](https://www.canva.com/design/DAFfLNy9-9E/Da7IHMFRXJKDKKowhEvC9A/edit?utm_content=DAFfLNy9-9E&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
